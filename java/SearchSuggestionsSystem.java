@@ -49,6 +49,7 @@ public class SearchSuggestionsSystem {
 class Solution {
     public List<List<String>> suggestedProducts(String[] products, String searchWord) {
         final Map<String, List<String>> dictionary = new HashMap<>();
+        Arrays.sort(products);
 
         for (String product : products) {
             for (int j = 0; j < product.length() && j < searchWord.length(); j++) {
@@ -67,9 +68,7 @@ class Solution {
                 result.add(Collections.emptyList());
                 continue;
             }
-
-            matches.sort(Comparator.naturalOrder());
-
+            
             int j = 0;
             List<String> suggestions = new ArrayList<>();
             while (j < matches.size() && j < 3) {
